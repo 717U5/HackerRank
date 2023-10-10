@@ -1,0 +1,56 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static int N(int[] arr, int l){
+        int r=0, sum=0, k=0;
+        
+        //loop for all negative number in array
+        for (int i = 0; i < l; i++) {
+            if (arr[i] < 0) {
+            r++;
+            }
+        }
+        
+        /*
+        nested loop for all subarray 
+        count from arr[0]>arr[4], then arr[1] to arr[4] and so on
+        l-1 because the first object is taken as sum
+        */
+        for(int i=0; i<l-1; i++){
+            sum = arr[i];
+            k =  i + 1;
+            while(k<=l-1){
+                sum += arr[k];
+                if(sum<0){
+                    r++;
+                }
+            k++;
+            }
+
+        }
+        
+        return r;
+    }
+    
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        int length = sc.nextInt();
+        int[] arr = new int[length];
+        
+        //fill in the new array
+        for(int i=0; i<length; i++){
+            arr[i] = sc.nextInt();
+        }
+        
+        //count the negative sums
+        int R = N(arr, length);
+        System.out.println(R);
+        
+        sc.close();
+    }
+    
+
+}
