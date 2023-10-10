@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        //create a big arraylist and many small array list
+        //put those smaller list into the big list
+        //to create ArrayList use ArrayList<Datatype> name = new ArrayList<Datatype>();
+    
+        Scanner sc = new Scanner(System.in);
+    
+        int l = sc.nextInt(); //scan and count the number of small list that we need to create
+        ArrayList<ArrayList> big = new ArrayList<ArrayList>(); //create list(Datatype: Arraylist)
+    
+        for(int i=0; i<l; i++){ //create 5 small list using loop
+            int k = sc.nextInt(); //scan and count the object in small list
+            ArrayList<Integer> small = new ArrayList<Integer>(); //create list(Datatype: Integer)
+        
+            for(int j=0; j<k; j++){ //put object into small using loop
+                small.add(sc.nextInt());
+            }
+        
+            //put the small list into big list
+            big.add(small);
+        }
+    
+        //use loop to find the object
+        int len = sc.nextInt(); //scan the number of input that we need to locate the object
+        for(int i=0; i<len; i++){
+            int x = sc.nextInt(); //scan the input x
+            int y = sc.nextInt(); //scan the input y
+            
+            try{
+                System.out.println(big.get(x-1).get(y-1)); //-1 because index start from 0
+            }catch(Exception e){
+                System.out.println("ERROR!");
+            }
+        }
+        
+        sc.close(); //close scanner
+    }
+}
